@@ -123,8 +123,10 @@ $
    $
    5y + 2 = 6
    $
+   $
    5y = 4 \quad \Rightarrow \quad y = \frac{4}{5}
    $
+   
 
 3. Substitusi \( y = \frac{4}{5} \) kembali ke dalam persamaan (2): 
 
