@@ -1,0 +1,1186 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Matriks &#8212; Komputasi Aljabar Linier</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'matriks';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Refleksi" href="transformasi.html" />
+    <link rel="prev" title="Penyelesaian Sistem Persamaan Linier" href="tugas1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/foto.jpg" class="logo__image only-light" alt="Komputasi Aljabar Linier - Home"/>
+    <script>document.write(`<img src="_static/foto.jpg" class="logo__image only-dark" alt="Komputasi Aljabar Linier - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    SISTEM PERSAMAAN LINIER
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tugas1.html">Penyelesaian Sistem Persamaan Linier</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Matriks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="transformasi.html">Refleksi</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fmatriks.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/matriks.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Matriks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-matriks">Definisi Matriks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordo-matriks">Ordo Matriks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-matriks-dengan-berbagai-ordo">Contoh Matriks Dengan Berbagai Ordo :</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operasi-aritmatika-matriks">Operasi Aritmatika Matriks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjumlahan-matriks">Penjumlahan Matriks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-penjumlahan-matrik">Konsep Penjumlahan Matrik</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perkalian-matriks">Perkalian Matriks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-perkalian-matriks">Konsep Perkalian Matriks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penyelesaian-persamaan-menggunakan-invers-matrik">Penyelesaian persamaan menggunakan invers matrik</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bentuk-matriks"><strong>1. Bentuk Matriks</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-a-1-menggunakan-operasi-baris-elementer"><strong>2. Menentukan <span class="math notranslate nohighlight">\( A^{-1} \)</span> Menggunakan Operasi Baris Elementer</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-mathbf-x-a-1-mathbf-b"><strong>3. Menghitung <span class="math notranslate nohighlight">\( \mathbf{x} = A^{-1} \mathbf{b} \)</span></strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determinan-matriks">Determinan Matriks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minor-matriks">Minor Matriks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cofaktor-matriks">Cofaktor Matriks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-determinan-dengan-konsep-minor-dan-cofaktor-matriks-beri-contoh-matriks-3x3-4x4-dan-5x5">Mencari Determinan dengan Konsep Minor dan Cofaktor Matriks. Beri Contoh matriks 3x3, 4x4, dan 5x5</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determinan-matrik-3-times-3">1. Determinan Matrik <span class="math notranslate nohighlight">\(3 \times 3\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determinan-matrik-4-times-4">2. Determinan Matrik <span class="math notranslate nohighlight">\(4 \times 4\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determinan-matrik-5-times-5">3. Determinan Matrik <span class="math notranslate nohighlight">\(5 \times 5\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="matriks">
+<h1>Matriks<a class="headerlink" href="#matriks" title="Link to this heading">#</a></h1>
+<section id="definisi-matriks">
+<h2>Definisi Matriks<a class="headerlink" href="#definisi-matriks" title="Link to this heading">#</a></h2>
+<p>Matriks adalah angka-angka yang disusun sedemikian sehingga menyerupai persegipanjang berdasarkan urutan baris dan kolom. Angka-angka yang menyusun matriks disebut sebagai unsur atau elemen. Umumnya, matriks berada di dalam tanda kurung dan dinyatakan sebagai huruf kapital. Sementara itu, unsur atau elemen dinyatakan sebagai huruf kecil serta memiliki indeks. Indeks tersebut menyatakan letak baris dan kolom unsur. Baris adalah susunan angka yang arahnya horizontal atau mendatar.</p>
+<section id="ordo-matriks">
+<h3>Ordo Matriks<a class="headerlink" href="#ordo-matriks" title="Link to this heading">#</a></h3>
+<p>Ordo matriks adalah ukuran dari matriks yang dinyatakan dalam bentuk m × n, di mana:</p>
+<ul class="simple">
+<li><p>m adalah jumlah baris.</p></li>
+<li><p>n adalah jumlah kolom.</p></li>
+</ul>
+<p>Misalnya, jika sebuah matriks memiliki 3 baris dan 2 kolom, maka ordonya adalah 3 × 2.</p>
+</section>
+<section id="contoh-matriks-dengan-berbagai-ordo">
+<h3>Contoh Matriks Dengan Berbagai Ordo :<a class="headerlink" href="#contoh-matriks-dengan-berbagai-ordo" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Matriks Ordo 4 × 4</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+B = \begin{bmatrix}
+1 &amp; 2 &amp; 3 &amp; 4 \\
+5 &amp; 6 &amp; 7 &amp; 8 \\
+9 &amp; 10 &amp; 11 &amp; 12 \\
+13 &amp; 14 &amp; 15 &amp; 16
+\end{bmatrix}
+\end{split}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Matriks Ordo 3 × 3</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+C = \begin{bmatrix}
+2 &amp; 4 &amp; 6 \\
+8 &amp; 10 &amp; 12 \\
+14 &amp; 16 &amp; 18
+\end{bmatrix}
+\end{split}\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Matriks Ordo 3 × 2</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+D = \begin{bmatrix}
+1 &amp; 2 \\
+3 &amp; 4 \\
+5 &amp; 6
+\end{bmatrix}
+\end{split}\]</div>
+<ol class="arabic simple" start="4">
+<li><p>Matriks Ordo 2 × 4</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+E = \begin{bmatrix}
+7 &amp; 8 &amp; 9 &amp; 10 \\
+11 &amp; 12 &amp; 13 &amp; 14
+\end{bmatrix}
+\end{split}\]</div>
+<ol class="arabic simple" start="5">
+<li><p>Matriks Ordo 1 × 3 (Matriks Baris)</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+F = \begin{bmatrix} 3 &amp; 5 &amp; 7 \end{bmatrix}
+\]</div>
+<ol class="arabic simple" start="6">
+<li><p>Matriks Ordo 3 × 1 (Matriks Kolom)</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+G = \begin{bmatrix}
+8 \\
+6 \\
+4
+\end{bmatrix}
+\end{split}\]</div>
+</section>
+</section>
+<section id="operasi-aritmatika-matriks">
+<h2>Operasi Aritmatika Matriks<a class="headerlink" href="#operasi-aritmatika-matriks" title="Link to this heading">#</a></h2>
+<p>Operasi aritmatika adalah sekumpulan empat operasi dasar yang dilakukan untuk menambah, mengurangi, mengalikan, atau membagi dua atau lebih kuantitas. Operasi ini meliputi studi angka termasuk urutan operasi yang berguna dalam semua bagian matematika lainnya seperti aljabar , penanganan data , dan geometri .</p>
+</section>
+<section id="penjumlahan-matriks">
+<h2>Penjumlahan Matriks<a class="headerlink" href="#penjumlahan-matriks" title="Link to this heading">#</a></h2>
+<p>Penjumlahan matriks adalah operasi penjumlahan dua matriks dengan menjumlahkan komponen-komponennya yang seletak. Dua matriks dapat dijumlahkan jika jumlah baris dan kolomnya sama. Matriks hasil penjumlahannya juga akan memiliki ordo yang sama.</p>
+<section id="konsep-penjumlahan-matrik">
+<h3>Konsep Penjumlahan Matrik<a class="headerlink" href="#konsep-penjumlahan-matrik" title="Link to this heading">#</a></h3>
+<p>Berikut contoh penjumlahan matriks :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># 1. Definisikan matriks A dan B dengan angka baru</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">]])</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+
+<span class="c1"># 2. Hitung penjumlahan matriks</span>
+<span class="n">penjumlahan</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span>
+
+<span class="c1"># 3. Cetak output sesuai format yang diminta</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hasil Penjumlahan:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">penjumlahan</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 3  6  9]
+ [ 2  5  8]
+ [ 4  7 10]]
+
+[[1 4 7]
+ [3 6 9]
+ [2 5 8]]
+
+Hasil Penjumlahan:
+[[ 4 10 16]
+ [ 5 11 17]
+ [ 6 12 18]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="perkalian-matriks">
+<h2>Perkalian Matriks<a class="headerlink" href="#perkalian-matriks" title="Link to this heading">#</a></h2>
+<p>Perkalian matriks adalah operasi yang melibatkan dua matriks untuk menghasilkan matriks baru. Namun, tidak semua matriks dapat dikalikan. Untuk melakukan perkalian matriks, ada beberapa aturan yang harus diikuti.</p>
+<p>Sebuah matriks A berukuran m × n bisa dikalikan dengan matriks B berukuran n × p jika jumlah kolom matriks pertama (n) sama dengan jumlah baris matriks kedua (n).
+Hasil perkalian akan menjadi matriks baru berukuran m × p.</p>
+<section id="konsep-perkalian-matriks">
+<h3>Konsep Perkalian Matriks<a class="headerlink" href="#konsep-perkalian-matriks" title="Link to this heading">#</a></h3>
+<p>Berikut contoh perkalian matriks :</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># 1. Definisikan matriks A dan B dengan angka baru</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]])</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]])</span>
+
+<span class="c1"># 2. Hitung perkalian matriks</span>
+<span class="n">perkalian</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+
+<span class="c1"># 3. Cetak matriks A dan B</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matriks A:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Matriks B:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+
+<span class="c1"># 4. Tampilkan langkah-langkah perhitungan setiap elemen matriks hasil</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Langkah-Langkah Perkalian Matriks:&quot;</span><span class="p">)</span>
+
+<span class="c1"># Loop untuk menampilkan perhitungan tiap elemen</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+        <span class="n">langkah</span> <span class="o">=</span> <span class="s2">&quot; + &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span><span class="si">}</span><span class="s2">×</span><span class="si">{</span><span class="n">B</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]))])</span>
+        <span class="n">hasil</span> <span class="o">=</span> <span class="n">perkalian</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elemen (</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">langkah</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">hasil</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 5. Cetak hasil akhir perkalian matriks</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Hasil Perkalian Matriks:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">perkalian</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matriks A:
+[[ 2  3  4]
+ [ 5  6  7]
+ [ 8  9 10]]
+
+Matriks B:
+[[1 2 3]
+ [4 5 6]
+ [7 8 9]]
+
+Langkah-Langkah Perkalian Matriks:
+Elemen (1,1): 2×1 + 3×4 + 4×7 = 42
+Elemen (1,2): 2×2 + 3×5 + 4×8 = 51
+Elemen (1,3): 2×3 + 3×6 + 4×9 = 60
+Elemen (2,1): 5×1 + 6×4 + 7×7 = 78
+Elemen (2,2): 5×2 + 6×5 + 7×8 = 96
+Elemen (2,3): 5×3 + 6×6 + 7×9 = 114
+Elemen (3,1): 8×1 + 9×4 + 10×7 = 114
+Elemen (3,2): 8×2 + 9×5 + 10×8 = 141
+Elemen (3,3): 8×3 + 9×6 + 10×9 = 168
+
+Hasil Perkalian Matriks:
+[[ 42  51  60]
+ [ 78  96 114]
+ [114 141 168]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="penyelesaian-persamaan-menggunakan-invers-matrik">
+<h2>Penyelesaian persamaan menggunakan invers matrik<a class="headerlink" href="#penyelesaian-persamaan-menggunakan-invers-matrik" title="Link to this heading">#</a></h2>
+<p>Kita diberikan sistem persamaan linear:</p>
+<p><span class="math notranslate nohighlight">\(
+\begin{aligned}
+    -7x_1 - 6x_2 - 12x_3 &amp;= -33 \\
+    5x_1 + 5x_2 + 7x_3 &amp;= 24 \\
+    x_1 + 4x_3 &amp;= 5
+\end{aligned}
+\)</span></p>
+<section id="bentuk-matriks">
+<h3><strong>1. Bentuk Matriks</strong><a class="headerlink" href="#bentuk-matriks" title="Link to this heading">#</a></h3>
+<p>Sistem persamaan di atas dapat dituliskan dalam bentuk matriks:</p>
+<p><span class="math notranslate nohighlight">\(
+A \mathbf{x} = \mathbf{b}
+\)</span></p>
+<p>dengan:</p>
+<p><span class="math notranslate nohighlight">\(
+A =
+\begin{bmatrix}
+-7 &amp; -6 &amp; -12 \\
+5 &amp; 5 &amp; 7 \\
+1 &amp; 0 &amp; 4
+\end{bmatrix},
+\quad
+\mathbf{x} =
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix},
+\quad
+\mathbf{b} =
+\begin{bmatrix}
+-33 \\ 24 \\ 5
+\end{bmatrix}
+\)</span></p>
+<p>Penyelesaian sistem menggunakan invers matriks diberikan oleh:</p>
+<p><span class="math notranslate nohighlight">\(
+\mathbf{x} = A^{-1} \mathbf{b}
+\)</span></p>
+<p>Kita akan mencari <span class="math notranslate nohighlight">\( A^{-1} \)</span> menggunakan operasi baris elementer.</p>
+<hr class="docutils" />
+</section>
+<section id="menentukan-a-1-menggunakan-operasi-baris-elementer">
+<h3><strong>2. Menentukan <span class="math notranslate nohighlight">\( A^{-1} \)</span> Menggunakan Operasi Baris Elementer</strong><a class="headerlink" href="#menentukan-a-1-menggunakan-operasi-baris-elementer" title="Link to this heading">#</a></h3>
+<p>Kita mulai dengan matriks augmented:</p>
+<p><span class="math notranslate nohighlight">\(
+\left[ A \,|\, I \right] =
+\left[
+\begin{array}{ccc|ccc}
+-7 &amp; -6 &amp; -12 &amp; 1 &amp; 0 &amp; 0 \\
+5 &amp; 5 &amp; 7 &amp; 0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 4 &amp; 0 &amp; 0 &amp; 1
+\end{array}
+\right]
+\)</span></p>
+<p><strong>Langkah 1: Ubah elemen (1,1) menjadi 1</strong></p>
+<p>Kita bagi baris pertama dengan <span class="math notranslate nohighlight">\( -7 \)</span>:</p>
+<p><span class="math notranslate nohighlight">\(
+\left[
+\begin{array}{ccc|ccc}
+1 &amp; \frac{6}{7} &amp; \frac{12}{7} &amp; -\frac{1}{7} &amp; 0 &amp; 0 \\
+5 &amp; 5 &amp; 7 &amp; 0 &amp; 1 &amp; 0 \\
+1 &amp; 0 &amp; 4 &amp; 0 &amp; 0 &amp; 1
+\end{array}
+\right]
+\)</span></p>
+<p><strong>Langkah 2: Nulifikasi elemen (2,1) dan (3,1)</strong></p>
+<p>Baris kedua: <span class="math notranslate nohighlight">\( R_2 \leftarrow R_2 - 5R_1 \)</span></p>
+<p>Baris ketiga: <span class="math notranslate nohighlight">\( R_3 \leftarrow R_3 - R_1 \)</span></p>
+<p><span class="math notranslate nohighlight">\(
+\left[
+\begin{array}{ccc|ccc}
+1 &amp; \frac{6}{7} &amp; \frac{12}{7} &amp; -\frac{1}{7} &amp; 0 &amp; 0 \\
+0 &amp; \frac{5}{7} &amp; \frac{1}{7} &amp; \frac{5}{7} &amp; 1 &amp; 0 \\
+0 &amp; -\frac{6}{7} &amp; \frac{16}{7} &amp; \frac{1}{7} &amp; 0 &amp; 1
+\end{array}
+\right]
+\)</span></p>
+<p><strong>Langkah 3: Ubah elemen (2,2) menjadi 1</strong></p>
+<p>Kita kalikan baris kedua dengan <span class="math notranslate nohighlight">\( \frac{7}{5} \)</span>:</p>
+<p><span class="math notranslate nohighlight">\(
+\left[
+\begin{array}{ccc|ccc}
+1 &amp; \frac{6}{7} &amp; \frac{12}{7} &amp; -\frac{1}{7} &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; \frac{1}{5} &amp; \frac{1}{5} &amp; \frac{7}{5} &amp; 0 \\
+0 &amp; -\frac{6}{7} &amp; \frac{16}{7} &amp; \frac{1}{7} &amp; 0 &amp; 1
+\end{array}
+\right]
+\)</span></p>
+<p><strong>Langkah 4: Nulifikasi elemen (1,2) dan (3,2)</strong></p>
+<p>Baris pertama: <span class="math notranslate nohighlight">\( R_1 \leftarrow R_1 - \frac{6}{7} R_2 \)</span></p>
+<p>Baris ketiga: <span class="math notranslate nohighlight">\( R_3 \leftarrow R_3 + \frac{6}{7} R_2 \)</span></p>
+<p><span class="math notranslate nohighlight">\(
+\left[
+\begin{array}{ccc|ccc}
+1 &amp; 0 &amp; \frac{10}{7} &amp; -\frac{5}{21} &amp; -\frac{6}{5} &amp; 0 \\
+0 &amp; 1 &amp; \frac{1}{5} &amp; \frac{1}{5} &amp; \frac{7}{5} &amp; 0 \\
+0 &amp; 0 &amp; \frac{22}{7} &amp; \frac{11}{35} &amp; \frac{42}{35} &amp; 1
+\end{array}
+\right]
+\)</span></p>
+<p><strong>Langkah 5: Ubah elemen (3,3) menjadi 1</strong></p>
+<p>Kita kalikan baris ketiga dengan <span class="math notranslate nohighlight">\( \frac{7}{22} \)</span>:</p>
+<p><span class="math notranslate nohighlight">\(
+\left[
+\begin{array}{ccc|ccc}
+1 &amp; 0 &amp; \frac{10}{7} &amp; -\frac{5}{21} &amp; -\frac{6}{5} &amp; 0 \\
+0 &amp; 1 &amp; \frac{1}{5} &amp; \frac{1}{5} &amp; \frac{7}{5} &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; \frac{1}{10} &amp; \frac{21}{22} &amp; \frac{7}{22}
+\end{array}
+\right]
+\)</span></p>
+<p><strong>Langkah 6: Nulifikasi elemen (1,3) dan (2,3)</strong></p>
+<p>Baris pertama: <span class="math notranslate nohighlight">\( R_1 \leftarrow R_1 - \frac{10}{7} R_3 \)</span></p>
+<p>Baris kedua: <span class="math notranslate nohighlight">\( R_2 \leftarrow R_2 - \frac{1}{5} R_3 \)</span></p>
+<p><span class="math notranslate nohighlight">\(
+\left[
+\begin{array}{ccc|ccc}
+1 &amp; 0 &amp; 0 &amp; -\frac{8}{21} &amp; -\frac{9}{5} &amp; -\frac{10}{22} \\
+0 &amp; 1 &amp; 0 &amp; \frac{1}{5} - \frac{1}{50} &amp; \frac{7}{5} - \frac{21}{110} &amp; -\frac{7}{110} \\
+0 &amp; 0 &amp; 1 &amp; \frac{1}{10} &amp; \frac{21}{22} &amp; \frac{7}{22}
+\end{array}
+\right]
+\)</span></p>
+<p>Setelah disederhanakan, kita dapatkan invers matriks <span class="math notranslate nohighlight">\( A^{-1} \)</span>:</p>
+<p><span class="math notranslate nohighlight">\(
+A^{-1} =
+\begin{bmatrix}
+-\frac{8}{21} &amp; -\frac{9}{5} &amp; -\frac{5}{11} \\
+\frac{2}{7} &amp; \frac{37}{35} &amp; -\frac{7}{55} \\
+\frac{1}{10} &amp; \frac{21}{22} &amp; \frac{7}{22}
+\end{bmatrix}
+\)</span></p>
+<hr class="docutils" />
+</section>
+<section id="menghitung-mathbf-x-a-1-mathbf-b">
+<h3><strong>3. Menghitung <span class="math notranslate nohighlight">\( \mathbf{x} = A^{-1} \mathbf{b} \)</span></strong><a class="headerlink" href="#menghitung-mathbf-x-a-1-mathbf-b" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(
+\mathbf{x} =
+\begin{bmatrix}
+-\frac{8}{21} &amp; -\frac{9}{5} &amp; -\frac{5}{11} \\
+\frac{2}{7} &amp; \frac{37}{35} &amp; -\frac{7}{55} \\
+\frac{1}{10} &amp; \frac{21}{22} &amp; \frac{7}{22}
+\end{bmatrix}
+\begin{bmatrix}
+-33 \\ 24 \\ 5
+\end{bmatrix}
+\)</span></p>
+<p>Setelah dihitung, diperoleh:</p>
+<p><span class="math notranslate nohighlight">\(
+\mathbf{x} =
+\begin{bmatrix}
+1 \\ 2 \\ 1
+\end{bmatrix}
+\)</span></p>
+<p>Jadi, solusi dari sistem persamaan adalah:</p>
+<p><span class="math notranslate nohighlight">\(
+x_1 = 1, \quad x_2 = 2, \quad x_3 = 1
+\)</span></p>
+</section>
+</section>
+<section id="determinan-matriks">
+<h2>Determinan Matriks<a class="headerlink" href="#determinan-matriks" title="Link to this heading">#</a></h2>
+<p>Determinan matriks merupakan selisih antara perkalian elemen-elemen pada diagonal utama dengan perkalian elemen-elemen pada diagonal sekunder. Determinan matriks hanya dapat dicari dengan matriks persegi. Determinan dari matriks A dapat ditulis det(A) atau |A|.
+Determinan matriks dapat ditemukan dalam matriks persegi ordo 2x2 dan 3x3.</p>
+<section id="minor-matriks">
+<h3>Minor Matriks<a class="headerlink" href="#minor-matriks" title="Link to this heading">#</a></h3>
+<p>Minor suatu matriks 𝐴 dilambangkan dengan 𝑀𝑖j adalah determinan matriks bagian dari matriks 𝐴 yang diperoleh dengan cara menghilangkan elemen – elemennya pada baris ke-𝑖 dan elemen elemen pada kolom ke-𝑗. Dengan demikian untuk matriks 1 x 1, kita tidak bisa mendapatkan minornya. Minor kita bisa dapatkan pada matriks persegi 2 x 2, 3 x 3, dan seterusnya. Jumlah minor dari suatu matriks mengikuti jumlah elemenya, jadi pada matriks 2 x 2 akan terdapat 4 minor yaitu M11
+, M12
+, M21
+, dan M22
+. Sedangkan pada matriks 3 x 3 maka akan terdapat 9 minor yaitu M11
+, M12
+, M13
+, M21
+, M22
+, M23
+, M31
+, M32
+, dan M33
+.</p>
+</section>
+<section id="cofaktor-matriks">
+<h3>Cofaktor Matriks<a class="headerlink" href="#cofaktor-matriks" title="Link to this heading">#</a></h3>
+<p>Kofaktor adalah hasil perkalian minor dengan suatu angka yang besarnya menuruti suatu aturan yaitu (-1)i+j
+dimana i adalah baris dan j adalah kolom. Kofaktor suatu elemen baris ke-𝑖 dan kolom ke-𝑗 dari matriks A dilambangkan dengan Cij.</p>
+</section>
+<section id="mencari-determinan-dengan-konsep-minor-dan-cofaktor-matriks-beri-contoh-matriks-3x3-4x4-dan-5x5">
+<h3>Mencari Determinan dengan Konsep Minor dan Cofaktor Matriks. Beri Contoh matriks 3x3, 4x4, dan 5x5<a class="headerlink" href="#mencari-determinan-dengan-konsep-minor-dan-cofaktor-matriks-beri-contoh-matriks-3x3-4x4-dan-5x5" title="Link to this heading">#</a></h3>
+<section id="determinan-matrik-3-times-3">
+<h4>1. Determinan Matrik <span class="math notranslate nohighlight">\(3 \times 3\)</span><a class="headerlink" href="#determinan-matrik-3-times-3" title="Link to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(
+A = \begin{bmatrix}
+2 &amp; 3 &amp; 1 \\
+4 &amp; 5 &amp; 6 \\
+7 &amp; 8 &amp; 9
+\end{bmatrix}
+\)</span></p>
+<p><strong>Menentukan determinan menggunakan ekspansi baris pertama :</strong></p>
+<p><span class="math notranslate nohighlight">\(
+\det(A) = 2C_{11} - 3C_{12} + 1C_{13}
+\)</span></p>
+<ul class="simple">
+<li><p><strong>Minor dan Kofaktor:</strong></p></li>
+</ul>
+<p>Minor <span class="math notranslate nohighlight">\(M_{11}\)</span> adalah determinan dari submatriks yang diperoleh dengan menghapus baris 1 dan kolom 1:</p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+   M_{11} &amp;= \begin{vmatrix} 5 &amp; 6 \\ 8 &amp; 9 \end{vmatrix} \\
+          &amp;= (5 \times 9) - (6 \times 8) \\
+          &amp;= 45 - 48 \\
+          &amp;= -3
+\end{aligned}\)</span></p>
+<p>Cofactor :</p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+    C_{11} &amp;= (-1)^{1+1} M_{11} \\
+           &amp;= (-1)^2 (-3) \\
+           &amp;= -3
+\end{aligned}\)</span></p>
+<p>Minor <span class="math notranslate nohighlight">\(M_{12}\)</span> adalah determinan dari submatriks yang diperoleh dengan menghapus baris 1 dan kolom 2:</p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+   M_{12} &amp;= \begin{vmatrix} 4 &amp; 6 \\ 7 &amp; 9  \end{vmatrix} \\
+          &amp;= (4 \times 9) - (6 \times 7) \\
+          &amp;= 36 - 42 \\
+          &amp;= -6
+\end{aligned}\)</span></p>
+<p>Cofaktor:</p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+    C_{12} &amp;= (-1)^{1+2} M_{12} \\
+           &amp;= (-1)^3 (-6) \\
+           &amp;= 6
+\end{aligned}\)</span></p>
+<p>Minor <span class="math notranslate nohighlight">\(M_{13}\)</span> adalah determinan dari submatriks yang diperoleh dengan menghapus baris 1 dan kolom 3:</p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+   M_{13} &amp;= \begin{vmatrix} 4 &amp; 5 \\ 7 &amp; 8  \end{vmatrix} \\
+          &amp;= (4 \times 8) - (5 \times 7) \\
+          &amp;= 32 - 35 \\
+          &amp;= -3
+\end{aligned}\)</span></p>
+<p>Kofaktor:</p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+    C_{13} &amp;= (-1)^{1+3} M_{13} \\
+           &amp;= (-1)^4 (-3) \\
+           &amp;= -3
+\end{aligned}\)</span></p>
+<ul class="simple">
+<li><p><strong>Determinan</strong></p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(
+\det(A) = a_{11}C_{11} - a_{12}C_{12} + a_{13}C_{13}
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+    \det(A) &amp;= (2 \times -3) - (3 \times 6) + (1 \times -3) \\
+            &amp;= -6 - 18 - 3 \\
+            &amp;= -27
+\end{aligned}\)</span></p>
+</section>
+<section id="determinan-matrik-4-times-4">
+<h4>2. Determinan Matrik <span class="math notranslate nohighlight">\(4 \times 4\)</span><a class="headerlink" href="#determinan-matrik-4-times-4" title="Link to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(
+B = \begin{bmatrix}
+1 &amp; 2 &amp; 3 &amp; 4 \\
+2 &amp; 3 &amp; 4 &amp; 3 \\
+3 &amp; 4 &amp; 1 &amp; 2 \\
+4 &amp; 3 &amp; 2 &amp; 1
+\end{bmatrix}
+\)</span></p>
+<p><strong>Menentukan determinan menggunakan ekspansi baris pertama :</strong></p>
+<p><span class="math notranslate nohighlight">\(
+\det(B) = 1C_{11} - 2C_{12} + 3C_{13} - 4C_{14}
+\)</span></p>
+<ul class="simple">
+<li><p><strong>Minor dan Kofaktor:</strong></p></li>
+</ul>
+<p>Minor <span class="math notranslate nohighlight">\(M_{11}\)</span> :</p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+   M_{11} &amp;= \begin{vmatrix} 1 &amp; 4 &amp; 3 \\ 4 &amp; 1 &amp; 2 \\ 3 &amp; 2 &amp; 1 \\  \end{vmatrix} \\
+          &amp;= 1 (1 \times 1 - 2 \times 2) - 4 (4 \times 1 - 2 \times 3) + 3 (4 \times 2 - 1 \times 3) \\
+          &amp;= 1 (1 - 4) - 4 (4 - 6) + 3 (8 - 3) \\
+          &amp;= 1 (-3) - 4 (-2) + 3 (5)\\
+          &amp;= -3 + 8 + 15\\
+          &amp;= 20
+\end{aligned}\)</span></p>
+<p>Cofactor :</p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+    C_{11} &amp;= (-1)^{1+1} M_{20} \\
+           &amp;= (-1)^2 (20) \\
+           &amp;= 20
+\end{aligned}\)</span></p>
+<p>Minor <span class="math notranslate nohighlight">\(M_{12}\)</span> :</p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+   M_{12} &amp;= \begin{vmatrix} 2 &amp; 4 &amp; 3 \\ 3 &amp; 1 &amp; 2 \\ 2 &amp; 2 &amp; 1 \\  \end{vmatrix} \\
+          &amp;= 2 (1 \times 1 - 2 \times 2) - 4 (3 \times 1 - 2 \times 4) + 3 (3 \times 2 - 1 \times 4) \\
+          &amp;= 2 (1 - 4) - 4 (3 - 8) + 3 (6 - 4) \\
+          &amp;= 2 (-3) - 4 (-5) + 3 (2)\\
+          &amp;= -6 + 20 + 6\\
+          &amp;= -20
+\end{aligned}\)</span></p>
+<p>Cofactor :</p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+    C_{12} &amp;= (-1)^{1+2} M_{20} \\
+           &amp;= (-1)^3 (20) \\
+           &amp;= -20
+\end{aligned}\)</span></p>
+<p>Minor <span class="math notranslate nohighlight">\(M_{13}\)</span> :</p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+   M_{13} &amp;= \begin{vmatrix}  2 &amp; 1 &amp; 3 \\ 3 &amp; 4 &amp; 2 \\ 4 &amp; 3 &amp; 1 \\ \end{vmatrix} \\
+          &amp;= 2 (4 \times 1 - 2 \times 3) - 1 (3 \times 1 - 2 \times 4) + 3 (3 \times 3 - 3 \times 4 - 4) \\
+          &amp;= 2 (4 - 6) - 1 (3 - 8) + 3 (9 - 16) \\
+          &amp;= 2 (-2) - 1 (-5) + 3 (-7)\\
+          &amp;= -4 + 5 - 21\\
+          &amp;= -20
+\end{aligned}\)</span></p>
+<p>Cofactor :</p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+    C_{13} &amp;= (-1)^{1+3} M_{-20} \\
+           &amp;= (-1)^4 (-20) \\
+           &amp;= -20
+\end{aligned}\)</span></p>
+<p>Minor <span class="math notranslate nohighlight">\(M_{14}\)</span> :</p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+   M_{14} &amp;= \begin{vmatrix}  2 &amp; 1 &amp; 4 \\ 3 &amp; 4 &amp; 1 \\ 4 &amp; 3 &amp; 2 \\ \end{vmatrix} \\
+          &amp;= 2 (4 \times 2 - 1 \times 3) - 1 (3 \times 2 - 1 \times 4) + 4 (3 \times 3 - 4 \times 4 ) \\
+          &amp;= 2 (8 - 3) - 1 (6 - 4) + 4 (9 - 16) \\
+          &amp;= 2 (5) - 1 (2) + 4 (-7)\\
+          &amp;= 10 - 2 - 28\\
+          &amp;= -20
+\end{aligned}\)</span></p>
+<p>Cofactor :</p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+    C_{14} &amp;= (-1)^{1+4} M_{-20} \\
+           &amp;= (-1)^5 (-20) \\
+           &amp;= 20
+\end{aligned}\)</span></p>
+<ul class="simple">
+<li><p><strong>Determinan</strong></p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(
+\det(B) = 1C_{11} - 2C_{12} + 3C_{13} - 4C_{14}
+\)</span></p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+    \det(B) &amp;= (1 \times 20) - (2 \times -20) + (3 \times -20) - (4 \times 20)\\
+            &amp;= 20 + 40 - 60 - 80 \\
+            &amp;= -80
+\end{aligned}\)</span></p>
+</section>
+<section id="determinan-matrik-5-times-5">
+<h4>3. Determinan Matrik <span class="math notranslate nohighlight">\(5 \times 5\)</span><a class="headerlink" href="#determinan-matrik-5-times-5" title="Link to this heading">#</a></h4>
+<p><span class="math notranslate nohighlight">\(
+C = \begin{bmatrix}
+1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 \\
+6 &amp; 7 &amp; 8 &amp; 9 &amp; 10 \\
+11 &amp; 12 &amp; 13 &amp; 14 &amp; 15 \\
+16 &amp; 17 &amp; 18 &amp; 19 &amp; 20 \\
+21 &amp; 22 &amp; 23 &amp; 24 &amp; 25
+\end{bmatrix}
+\)</span></p>
+<p><strong>Menentukan determinan menggunakan ekspansi baris pertama :</strong></p>
+<p><span class="math notranslate nohighlight">\(
+\det(C) = 1C_{11} - 2C_{12} + 3C_{13} - 4C_{14} - 5C_{15}
+\)</span></p>
+<ul class="simple">
+<li><p><strong>Minor dan Kofaktor:</strong></p></li>
+</ul>
+<p>Minor <span class="math notranslate nohighlight">\(M_{11}\)</span> :</p>
+<p><span class="math notranslate nohighlight">\(M_{11} = \begin{vmatrix} 7 &amp; 8 &amp; 9 &amp; 10 \\ 12 &amp; 13 &amp; 14 &amp; 15 \\ 17 &amp; 18 &amp; 19 &amp; 20 \\ 22 &amp; 23 &amp; 24 &amp; 25 \end{vmatrix}\)</span></p>
+<p>Kita hitung minor <span class="math notranslate nohighlight">\(3 \times 3\)</span></p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+   M_{11} &amp;= \begin{vmatrix}  13 &amp; 14 &amp; 15 \\ 18 &amp; 19 &amp; 20 \\ 23 &amp; 24 &amp; 25 \end{vmatrix} \\
+          &amp;= 13 (19 \times 25 - 20 \times 24) - 14 (18 \times 25 - 20 \times 23) + 15 (18 \times 24 - 19 \times 23) \\
+          &amp;= 13 (475 - 480) - 14 (450 - 460) + 15 (432 - 437) \\
+          &amp;= 13 (-5) - 14 (-10) + 15 (-5)\\
+          &amp;= -65 + 140 -75\\
+          &amp;= 0
+\end{aligned}\)</span></p>
+<p>Cofactor :</p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+    C_{11} &amp;= (-1)^{1+1} M_{20} \\
+           &amp;= (-1)^2 (0) \\
+           &amp;= 0
+\end{aligned}\)</span></p>
+<ul class="simple">
+<li><p><strong>Determinan</strong></p></li>
+</ul>
+<p><span class="math notranslate nohighlight">\(
+\det(C) = 1C_{11} - 2C_{12} + 3C_{13} - 4C_{14} + 5C_{15}
+\)</span></p>
+<p>Karena setiap minor dari baris pertama menghasilkan determinan 0, maka :</p>
+<p><span class="math notranslate nohighlight">\(\begin{aligned}
+    \det(C) &amp;= 1 (0) - 2 (0) + 3 (0) - 4 (0) + 5 (0)\\
+            &amp;= 0
+\end{aligned}\)</span></p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tugas1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Penyelesaian Sistem Persamaan Linier</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="transformasi.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Refleksi</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-matriks">Definisi Matriks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ordo-matriks">Ordo Matriks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-matriks-dengan-berbagai-ordo">Contoh Matriks Dengan Berbagai Ordo :</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operasi-aritmatika-matriks">Operasi Aritmatika Matriks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penjumlahan-matriks">Penjumlahan Matriks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-penjumlahan-matrik">Konsep Penjumlahan Matrik</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perkalian-matriks">Perkalian Matriks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-perkalian-matriks">Konsep Perkalian Matriks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#penyelesaian-persamaan-menggunakan-invers-matrik">Penyelesaian persamaan menggunakan invers matrik</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bentuk-matriks"><strong>1. Bentuk Matriks</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-a-1-menggunakan-operasi-baris-elementer"><strong>2. Menentukan <span class="math notranslate nohighlight">\( A^{-1} \)</span> Menggunakan Operasi Baris Elementer</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menghitung-mathbf-x-a-1-mathbf-b"><strong>3. Menghitung <span class="math notranslate nohighlight">\( \mathbf{x} = A^{-1} \mathbf{b} \)</span></strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determinan-matriks">Determinan Matriks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minor-matriks">Minor Matriks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cofaktor-matriks">Cofaktor Matriks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mencari-determinan-dengan-konsep-minor-dan-cofaktor-matriks-beri-contoh-matriks-3x3-4x4-dan-5x5">Mencari Determinan dengan Konsep Minor dan Cofaktor Matriks. Beri Contoh matriks 3x3, 4x4, dan 5x5</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determinan-matrik-3-times-3">1. Determinan Matrik <span class="math notranslate nohighlight">\(3 \times 3\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determinan-matrik-4-times-4">2. Determinan Matrik <span class="math notranslate nohighlight">\(4 \times 4\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#determinan-matrik-5-times-5">3. Determinan Matrik <span class="math notranslate nohighlight">\(5 \times 5\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 23-008_Muhammad Umar Faruq
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
