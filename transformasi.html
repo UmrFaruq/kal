@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'transformasi';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Eigenvalues dan Eigenvektor" href="eigen.html" />
     <link rel="prev" title="Matriks" href="matriks.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -188,6 +189,7 @@
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="eigen.html">Eigenvalues dan Eigenvektor</a></li>
 </ul>
 
     </div>
@@ -384,9 +386,9 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Refleksi</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repleksi-pada-2d-dua-dimensi">✅ <strong>Repleksi pada 2D (dua dimensi)</strong>:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repleksi-pada-3d-tiga-dimensi">✅ ** Repleksi pada 3D (tiga dimensi)**:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-refleksi-matriks">🔧 <strong>Aplikasi Refleksi Matriks</strong>:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repleksi-pada-2d-dua-dimensi">Repleksi pada 2D (dua dimensi):</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repleksi-pada-3d-tiga-dimensi">Repleksi pada 3D (tiga dimensi):</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-refleksi-matriks">Aplikasi Refleksi Matriks:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latihan">Latihan</a></li>
 </ul>
 </li>
@@ -396,9 +398,9 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matrik-rotasi">Matrik Rotasi</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-rotasi-pada-2d">✅  <strong>Matriks Rotasi pada 2D</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-rotasi-pada-3d">✅  <strong>Matriks Rotasi pada 3D</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-matriks-rotasi">🛠️ <strong>Aplikasi Matriks Rotasi:</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-rotasi-pada-2d">Matriks Rotasi pada 2D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-rotasi-pada-3d">Matriks Rotasi pada 3D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-matriks-rotasi">Aplikasi Matriks Rotasi:</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#komposisi-transformasi">Komposisi transformasi</a><ul class="visible nav section-nav flex-column">
@@ -409,9 +411,9 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matrik-translasi">Matrik Translasi</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-translasi-pada-2d">✅ <strong>Matriks Translasi pada 2D</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-translasi-pada-3d">✅ <strong>Matriks Translasi pada 3D</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-matriks-translasi">✅ <strong>Aplikasi Matriks Translasi:</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-translasi-pada-2d">Matriks Translasi pada 2D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-translasi-pada-3d">Matriks Translasi pada 3D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-matriks-translasi">Aplikasi Matriks Translasi:</a></li>
 </ul>
 </li>
 </ul>
@@ -428,11 +430,11 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="refleksi">
 <h1>Refleksi<a class="headerlink" href="#refleksi" title="Link to this heading">#</a></h1>
-<p><strong>Refleksi matriks</strong> (reflection matrix) adalah <strong>matriks transformasi</strong> yang mencerminkan (memantulkan) titik-titik dalam ruang terhadap <strong>sumbu, garis, bidang, atau titik tertentu</strong>.</p>
+<p>Refleksi matriks (reflection matrix) adalah matriks transformasi yang mencerminkan (memantulkan) titik-titik dalam ruang terhadap <strong>sumbu, garis, bidang, atau titik tertentu</strong>.</p>
 <p>Refleksi mengubah arah satu atau lebih komponen vektor, seperti bayangan di cermin.</p>
 <hr class="docutils" />
 <section id="repleksi-pada-2d-dua-dimensi">
-<h2>✅ <strong>Repleksi pada 2D (dua dimensi)</strong>:<a class="headerlink" href="#repleksi-pada-2d-dua-dimensi" title="Link to this heading">#</a></h2>
+<h2>Repleksi pada 2D (dua dimensi):<a class="headerlink" href="#repleksi-pada-2d-dua-dimensi" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><strong>Refleksi terhadap sumbu-x</strong>:</p></li>
 </ol>
@@ -496,7 +498,7 @@ x
 <hr class="docutils" />
 </section>
 <section id="repleksi-pada-3d-tiga-dimensi">
-<h2>✅ ** Repleksi pada 3D (tiga dimensi)**:<a class="headerlink" href="#repleksi-pada-3d-tiga-dimensi" title="Link to this heading">#</a></h2>
+<h2>Repleksi pada 3D (tiga dimensi):<a class="headerlink" href="#repleksi-pada-3d-tiga-dimensi" title="Link to this heading">#</a></h2>
 <p>Refleksi bisa dilakukan terhadap bidang seperti <span class="math notranslate nohighlight">\(x=0\)</span>, <span class="math notranslate nohighlight">\(y=0\)</span>, atau <span class="math notranslate nohighlight">\(z=0\)</span>. Contoh refleksi terhadap bidang <span class="math notranslate nohighlight">\(x=0\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -509,7 +511,7 @@ x
 <hr class="docutils" />
 </section>
 <section id="aplikasi-refleksi-matriks">
-<h2>🔧 <strong>Aplikasi Refleksi Matriks</strong>:<a class="headerlink" href="#aplikasi-refleksi-matriks" title="Link to this heading">#</a></h2>
+<h2>Aplikasi Refleksi Matriks:<a class="headerlink" href="#aplikasi-refleksi-matriks" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Grafika komputer (cermin objek)</p></li>
 <li><p>Geometri transformasi</p></li>
@@ -1016,7 +1018,7 @@ y + kx
 <p>Matriks rotasi memutar titik atau objek <strong>sekitar asal (0,0)</strong> atau sumbu tertentu, dengan <strong>sudut tertentu</strong> (biasanya dalam radian atau derajat).</p>
 <hr class="docutils" />
 <section id="matriks-rotasi-pada-2d">
-<h2>✅  <strong>Matriks Rotasi pada 2D</strong><a class="headerlink" href="#matriks-rotasi-pada-2d" title="Link to this heading">#</a></h2>
+<h2>Matriks Rotasi pada 2D<a class="headerlink" href="#matriks-rotasi-pada-2d" title="Link to this heading">#</a></h2>
 <p>Untuk memutar vektor sebesar sudut <span class="math notranslate nohighlight">\(\theta\)</span> terhadap titik asal dalam bidang 2D:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1043,7 +1045,7 @@ y
 </section>
 <hr class="docutils" />
 <section id="matriks-rotasi-pada-3d">
-<h2>✅  <strong>Matriks Rotasi pada 3D</strong><a class="headerlink" href="#matriks-rotasi-pada-3d" title="Link to this heading">#</a></h2>
+<h2>Matriks Rotasi pada 3D<a class="headerlink" href="#matriks-rotasi-pada-3d" title="Link to this heading">#</a></h2>
 <p>Di 3D, rotasi bisa dilakukan terhadap sumbu X, Y, atau Z.</p>
 <ol class="arabic simple">
 <li><p><strong>Rotasi terhadap sumbu X (dengan sudut <span class="math notranslate nohighlight">\(\theta\)</span>)</strong>:</p></li>
@@ -1084,7 +1086,7 @@ R_z(\theta) =
 </section>
 <hr class="docutils" />
 <section id="aplikasi-matriks-rotasi">
-<h2>🛠️ <strong>Aplikasi Matriks Rotasi:</strong><a class="headerlink" href="#aplikasi-matriks-rotasi" title="Link to this heading">#</a></h2>
+<h2>Aplikasi Matriks Rotasi:<a class="headerlink" href="#aplikasi-matriks-rotasi" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Grafika komputer (animasi, rotasi objek)</p></li>
 <li><p>Robotika (pergerakan lengan robot)</p></li>
@@ -1228,7 +1230,7 @@ C = A \times B
 <p><strong>Matriks translasi</strong> adalah matriks yang digunakan untuk <strong>mentranslasi</strong> (menggeser) titik atau objek dalam ruang. Translasi memindahkan titik dengan <strong>jarak tertentu</strong> di sepanjang sumbu tertentu, tanpa mengubah bentuk atau orientasi objek.</p>
 <hr class="docutils" />
 <section id="matriks-translasi-pada-2d">
-<h2>✅ <strong>Matriks Translasi pada 2D</strong><a class="headerlink" href="#matriks-translasi-pada-2d" title="Link to this heading">#</a></h2>
+<h2>Matriks Translasi pada 2D<a class="headerlink" href="#matriks-translasi-pada-2d" title="Link to this heading">#</a></h2>
 <p>Dalam ruang dua dimensi (2D), matriks translasi biasanya dituliskan sebagai:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1268,7 +1270,7 @@ y \\
 <hr class="docutils" />
 </section>
 <section id="matriks-translasi-pada-3d">
-<h2>✅ <strong>Matriks Translasi pada 3D</strong><a class="headerlink" href="#matriks-translasi-pada-3d" title="Link to this heading">#</a></h2>
+<h2>Matriks Translasi pada 3D<a class="headerlink" href="#matriks-translasi-pada-3d" title="Link to this heading">#</a></h2>
 <p>Untuk translasi di ruang tiga dimensi (3D), matriks translasi dapat dituliskan sebagai:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1310,7 +1312,7 @@ z \\
 <hr class="docutils" />
 </section>
 <section id="aplikasi-matriks-translasi">
-<h2>✅ <strong>Aplikasi Matriks Translasi:</strong><a class="headerlink" href="#aplikasi-matriks-translasi" title="Link to this heading">#</a></h2>
+<h2>Aplikasi Matriks Translasi:<a class="headerlink" href="#aplikasi-matriks-translasi" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Grafika komputer</strong>: Untuk menggeser objek atau gambar di layar.</p></li>
 <li><p><strong>Robotika</strong>: Untuk memindahkan posisi lengan robot.</p></li>
@@ -1407,6 +1409,15 @@ z \\
         <p class="prev-next-title">Matriks</p>
       </div>
     </a>
+    <a class="right-next"
+       href="eigen.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Eigenvalues dan Eigenvektor</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1424,9 +1435,9 @@ z \\
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Refleksi</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repleksi-pada-2d-dua-dimensi">✅ <strong>Repleksi pada 2D (dua dimensi)</strong>:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repleksi-pada-3d-tiga-dimensi">✅ ** Repleksi pada 3D (tiga dimensi)**:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-refleksi-matriks">🔧 <strong>Aplikasi Refleksi Matriks</strong>:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repleksi-pada-2d-dua-dimensi">Repleksi pada 2D (dua dimensi):</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repleksi-pada-3d-tiga-dimensi">Repleksi pada 3D (tiga dimensi):</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-refleksi-matriks">Aplikasi Refleksi Matriks:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latihan">Latihan</a></li>
 </ul>
 </li>
@@ -1436,9 +1447,9 @@ z \\
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matrik-rotasi">Matrik Rotasi</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-rotasi-pada-2d">✅  <strong>Matriks Rotasi pada 2D</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-rotasi-pada-3d">✅  <strong>Matriks Rotasi pada 3D</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-matriks-rotasi">🛠️ <strong>Aplikasi Matriks Rotasi:</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-rotasi-pada-2d">Matriks Rotasi pada 2D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-rotasi-pada-3d">Matriks Rotasi pada 3D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-matriks-rotasi">Aplikasi Matriks Rotasi:</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#komposisi-transformasi">Komposisi transformasi</a><ul class="visible nav section-nav flex-column">
@@ -1449,9 +1460,9 @@ z \\
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matrik-translasi">Matrik Translasi</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-translasi-pada-2d">✅ <strong>Matriks Translasi pada 2D</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-translasi-pada-3d">✅ <strong>Matriks Translasi pada 3D</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-matriks-translasi">✅ <strong>Aplikasi Matriks Translasi:</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-translasi-pada-2d">Matriks Translasi pada 2D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matriks-translasi-pada-3d">Matriks Translasi pada 3D</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aplikasi-matriks-translasi">Aplikasi Matriks Translasi:</a></li>
 </ul>
 </li>
 </ul>
